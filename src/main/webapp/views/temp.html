@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <style>
+        body{
+        'background-image: url("css/img1.jpg");
+        background-size: cover;
+
+        }
+        #div1 {
+            display: block;
+
+        }
+        ul#menu li {
+
+            display: inline;
+            margin-left: 20px;
+        }
+
+
+        /* Dropdown Button */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        #div3{
+            height: 600px;
+            width: 300px;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Apple Sauce</title>
+</head>
+<body>
+
+
+
+<script>
+
+    //var data = { "firstName": $("#fname").val(), "lastName": $("#lname").val() };
+
+
+    $(document).ready(function(){
+
+        var $dropdown = $("#customerList");
+
+        $.getJSON("/customer/getallcustomers", function(data) {
+            //console.log(data);
+            $dropdown.empty();
+            for (var p in data) {
+                $dropdown.append("<option>" + data[p].firstName + ' ' + data[p].lastName + "</option>");
+                console.log(data[p].firstName + ' ' + data[p].lastName);
+            }
+
+        });
+
+        $("#startDate").click(function(){
+
+            console.log($(this).val());
+
+        });
+
+        $("#b1").click(function(){
+            var data = { "firstName": $("#fname").val(),
+                "lastName": $("#lname").val(),
+                "email": $("#email").val(),
+                "phoneNumber": $("#phonenumber").val(),
+                "source": $("#source").val()};
+
+            $.get('/customer/addcustomer',data,function(response){
+
+                console.log(response);
+                $("#div1").text('First Name: ' + data.firstName);
+
+            });
+            //console.log(data.firstName);
+            console.log("You have clicked the button!");
+        });
+        $("#b2").click(function(){
+            var data = { "name": $("#dogname").val(),
+                "sex": $("#dogsex").val(),
+                "weight": $("#dogweight").val(),
+                "breed": $("#dogbreed").val(),
+                "spayed": $("#dogspayed").val(),
+                "notes": $("#dognotes").val()};
+
+            $.get('/dog/adddog',data,function(response){
+
+                console.log(response);
+                $("#div2").text('Dog Name: ' + data.name);
+
+            });
+            //console.log(data.firstName);
+            console.log("You have clicked the button!");
+        });
+    });
+
+    /*function A(){
+     this.getName = function(data) {
+     var xhttp = new XMLHttpRequest();
+     xhttp.open("GET", "/printinfo?firstName=Henry&lastName=Foasfdsafdsard", true);
+     xhttp.send();
+     var res = xhttp.response;
+     console.log(xhttp);
+     }
+     };
+
+     var myObject = new A()
+
+
+     document.addEventListener("DOMContentLoaded", function(event) {
+     console.log(this);
+     alert("DOM fully loaded and parsed");
+     document.querySelector("#b1").addEventListener("click",function(){
+     myObject.getName(this.dataset.name);
+     });
+     });*/
+
+</script>
+
+<div class="container">
+    <div class="jumbotron">
+        <ul id="menu">
+            <li>Home</li>
+            <li>Add Customer</li>
+            <li>Add Dog</li>
+            <li>Reservations</li>
+            <li>Calendar</li>
+            <li>Contact Us</li>
+            <li><a href="https://www.rover.com/sit/actionjackson" target="_blank">Rover</a> </li>
+            <li><a href="https://www.dogvacay.com/pro/ActionJackson" target="_blank">DogVacay</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <a href="#">Home</a>
+        <a href="#">Add</a>
+        <a href="#">Update</a>
+    </div>
+</div>
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <a href="#">Home</a>
+        <a href="#">safasd</a>
+        <a href="#">Upfasdfasdf32232date</a>
+    </div>
+</div>
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <a href="#">Home</a>
+        <a href="#">23323232</a>
+        <a href="#">Upd33232323232f3223f23f23ate</a>
+    </div>
+</div>
+
+<br>
+First name: <input type="text" id="fname"><br>
+Last name: <input type="text" id="lname"><br>
+Email: <input type="text" id="email"><br>
+Phone Number: <input type="text" id="phonenumber"><br>
+Source: <input type="text" id="source"><br>
+
+
+<button type="button" id="b1">Click Me!</button>
+
+<div id="div1">
+
+
+</div>
+<select id="customerList">
+    <option selected value="base">Please Select</option>
+</select>
+
+<br>
+
+Name: <input type="text" id="dogname"><br>
+Sex: <input type="text" id="dogsex"><br>
+Weight: <input type="text" id="dogweight"><br>
+Breed: <input type="text" id="dogbreed"><br>
+Spayed?: <input type="text" id="dogspayed"><br>
+Notes: <input type="text" id="dognotes"><br>
+
+
+<button type="button" id="b2">Click Me!</button>
+
+<div id="div2">
+
+    Please Enter a Start Date: <input type="date" name="startDate" id="startDate">
+
+    <div id="startDateDiv">
+
+    </div>
+
+</div>
+
+
+<div id="div3">
+    ABCDEFG
+
+</div>
+
+
+
+
+
+
+
+<div class="wrapper-dropdown">
+    <span>I'm kinda the label!</span>
+    <ul class="dropdown">
+        <li>I'm hidden!</li>
+        <li>Me too!</li>
+        <li>So do I.</li>
+    </ul>
+</div>
+
+
+
+
+<!-- Modules -->
+<script src="js/app.js"></script>
+
+<!-- Controllers -->
+<script src="js/controllers/MainController.js"></script>
+
+<!-- Services -->
+<script src="js/services/forecast.js"></script>
+
+<!-- Directives -->
+
+
+</body>
+</html>

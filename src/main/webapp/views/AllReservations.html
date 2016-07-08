@@ -1,0 +1,25 @@
+<div class="table-responsive" ng-init="getAllReservations()">
+
+        <table class="table" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Meet And Greet</th>
+                <th>Net Amount</th>
+                <th>Customer</th>
+                <th>Dogs</th>
+            </tr>
+            <tr ng-repeat="reservation in reservationData">
+                <td>{{reservation.id}}</td>
+                <td>{{reservation.startDate | date}}</td>
+                <td>{{reservation.endDate | date}}</td>
+                <td>{{reservation.meetAndGreet | date}}</td>
+                <td>{{reservation.netAmount | currency}}</td>
+                <td>{{reservation.customer.firstName}}</td>
+                <td ng-repeat="dog in reservation.dogs">{{dog.name}} <br>{{dog.sex}}</td>
+            </tr>
+
+        </table>
+
+</div>

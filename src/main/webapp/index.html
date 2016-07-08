@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!-- Include the core AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <!-- Include the AngularJS routing library -->
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+    <!-- Include the AngularJS UI-routing library -->
+    <script src="js/angular/angular-ui-router.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Apple Sauce</title>
+</head>
+<body ng-app="ReservationApp">
+
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+
+                <a href="#/"> Home </a>
+                <div class="dropdown">
+                    <button class="dropbtn">Customer</button>
+                    <div class="dropdown-content">
+                        <a href="#/addcustomer"> Add Customer </a>
+                        <a href="#">Update Customer</a>
+                        <a href="#/allcustomers"> All Customers </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dog</button>
+                    <div class="dropdown-content">
+                        <a href="#/adddog"> Add Dog </a>
+                        <a href="#">Update Dog</a>
+                        <a href="#/alldogs"> All Dogs </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Reservation</button>
+                    <div class="dropdown-content">
+                        <a href="#/addreservation"> Add Reservation </a>
+                        <a href="#">Update Reservation</a>
+                        <a href="#/allreservations"> All Reservations </a>
+                    </div>
+                </div>
+                Calendar
+
+                <!--
+                <ul class="headerMenu">
+                    <li><a href="#/"> Home </a></li>
+                    <li><a href="#/addcustomer"> Add Customer </a></li>
+                    <li><a href="#/allcustomers"> All Customers </a></li>
+                    <li><a href="#/adddog"> Add Dog </a></li>
+                    <li><a href="#/alldogs"> All Dogs </a></li>
+                    <li><a href="#/addreservation"> Add Reservation </a></li>
+                    <li><a href="#/allreservations"> All Reservations </a></li>
+                    <li>Calendar</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div ng-view>VIEW</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <ul class="footerMenu">
+                    <li>Contact Us</li>
+                    <li><a href="https://www.rover.com/sit/actionjackson" target="_blank">Rover</a> </li>
+                    <li><a href="https://www.dogvacay.com/pro/ActionJackson" target="_blank">DogVacay</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/CustomerController.js"></script>
+    <script src="js/controllers/DogController.js"></script>
+    <script src="js/controllers/ReservationController.js"></script>
+
+    <!-- Services -->
+
+
+    <!-- Directives -->
+    <script src="js/directives/addCustomer.js"></script>
+    <script src="js/directives/addDog.js"></script>
+    <script src="js/directives/addReservation.js"></script>
+
+</body>
+</html>

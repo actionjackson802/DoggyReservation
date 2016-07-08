@@ -1,0 +1,27 @@
+<div class="table-responsive" ng-init="getAllDogs()">
+
+        <table class="table" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Sex</th>
+                <th>Weight</th>
+                <th>Breed</th>
+                <th>Spayed</th>
+                <th>Notes</th>
+                <th>Dog ID</th>
+            </tr>
+            <tr ng-repeat="dog in dogData">
+                <td>{{dog.id}}</td>
+                <td>{{dog.name}}</td>
+                <td>{{dog.sex}}</td>
+                <td>{{dog.weight}}</td>
+                <td>{{dog.breed}}</td>
+                <td>{{dog.spayed}}</td>
+                <td>{{dog.notes}}</td>
+                <td>{{dog.dogId}}</td>
+            </tr>
+
+        </table>
+
+</div>
